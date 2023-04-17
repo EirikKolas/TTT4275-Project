@@ -17,7 +17,7 @@ matrixRow1 = {'1' '2' '3' '1' '2' '1' '3' ;1 3 3 1 3 1 3}; % '1' = 1, '2' = 3, '
 matrixRow2 = {'1' '2' '3' '1' '2' '1' '3' ;4 1 3 4 1 4 3}; % '1' = 4, '2' = 1, '3' = 3
 matrixRow3 = {'1' '2' '3' '1' '2' '1' '3' ;4 3 1 4 3 4 1}; % '1' = 4, '2' = 3, '3' = 1
 
-distanceMatrixWithLabel = [matrixRow1;matrixRow2;matrixRow3];
+distanceMatrixWithLabel = [matrixRow1;matrixRow2;matrixRow3]; %print ut denne for å se hele formatet på matrisen
 
 %sorterer distanse matrisen
 for i = 1:2:numPointsToClassify*2
