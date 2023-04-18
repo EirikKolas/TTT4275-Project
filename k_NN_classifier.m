@@ -30,6 +30,4 @@ function test_set = k_NN_classifier(training_set, test_set, k)
 
     end
     
-
-
 end
