@@ -1,10 +1,11 @@
 %% Load data
 all_data = load_music_data('Classification music/GenreClassData_30s.txt');
 
-%% Split data in training-sets and test-sets
+
 % Choose features
 features = ["spectral_rolloff_mean", "mfcc_1_mean", "spectral_centroid_mean", "tempo"];
 
+% Split data in training-sets and test-sets
 training_set = [];
 test_set = [];
 for data = all_data
@@ -25,10 +26,10 @@ end
 classified_data = k_NN_classifier(training_set, test_set, 5);
 
 % Confusion matrix
-[C_matrix, labels] = confusion_matrix(classified_data);
+[confusion, labels] = confusion_matrix(classified_data);
 
 % Error rate
-diag_sum = sum(diag(C_matrix));
-total_sum = sum(C_matrix(:));
+diag_sum = sum(diag(confusion));
+total_sum = sum(confusion(:));
 error_rate = (total_sum - diag_sum)/total_sum
 
