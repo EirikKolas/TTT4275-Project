@@ -22,7 +22,13 @@ end
 
 
 %% Classify
+classified_data = k_NN_classifier(training_set, test_set, 5);
 
+% Confusion matrix
+[C_matrix, labels] = confusion_matrix(classified_data);
 
-asdf = k_NN_classifier(training_set, test_set, 5);
+% Error rate
+diag_sum = sum(diag(C_matrix));
+total_sum = sum(C_matrix(:));
+error_rate = (total_sum - diag_sum)/total_sum
 

@@ -15,7 +15,7 @@ function test_set = k_NN_classifier(training_set, test_set, k)
         S_sorted = table2struct(T_sorted);
 
         % Pick out the 5 shortest
-        distances_sorted = S_sorted(2:k+1); % we always get a distance zero for some reason
+        distances_sorted = S_sorted(1:k);
 
         %% Count classes
         labels = {distances_sorted.label};
@@ -26,7 +26,7 @@ function test_set = k_NN_classifier(training_set, test_set, k)
         % Count the occurrences of each label
         label_counts = histcounts(label_indices, 1:numel(unique_labels)+1);
         [~, max_index] = max(label_counts);
-        test_set(i).classifed = char(unique_labels(max_index));
+        test_set(i).classifed_as = char(unique_labels(max_index));
 
     end
     
