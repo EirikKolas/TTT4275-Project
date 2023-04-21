@@ -1,5 +1,6 @@
 %% Load data
 all_data = load_music_data('Classification music/GenreClassData_30s.txt');
+all_data_normalized = data_set_normalizer(all_data);
 
 % Choose features and classes
 features = ["spectral_rolloff_mean", "mfcc_1_mean", "spectral_centroid_mean", "tempo"];
@@ -8,7 +9,7 @@ classes  = ["pop", "disco", "metal", "classical"];
 % Split data in training-sets and test-sets
 training_set = [];
 test_set = [];
-for data = all_data
+for data = all_data_normalized
     if isempty(find(data.Genre == classes, 1))
         continue
     end
@@ -26,7 +27,7 @@ end
 
 %% Histogram
 % Init histogram
-for data = all_data
+for data = all_data_normalized
     if isempty(find(data.Genre == classes, 1))
         continue
     end
@@ -35,7 +36,7 @@ for data = all_data
     end
 end
 % Structure data for histogram
-for data = all_data
+for data = all_data_normalized
     if isempty(find(data.Genre == classes, 1))
         continue
     end
