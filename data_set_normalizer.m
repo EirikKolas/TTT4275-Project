@@ -6,7 +6,7 @@ function data_set_normalized = data_set_normalizer(all_data)
     for j = 1:length(fields)
         if ~(strcmp(fields(j), 'TrackID') || strcmp(fields(j), 'File') || strcmp(fields(j), 'GenreID') || strcmp(fields(j), 'Genre') || strcmp(fields(j), 'Type'))
             field = extractfield(all_data, string(fields(j)));
-            normalized = array2table(normalize(field,'norm')');
+            normalized = array2table(normalize(field,'range')');
             data_table(:,j) = normalized;
         end
     end 
