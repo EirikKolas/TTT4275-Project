@@ -25,7 +25,7 @@ function plot_histogram(all_data, features, classes)
         nexttile
         labels = fieldnames(histograms.(features{f}));
         for l = 1:length(labels)
-            histogram(histograms.(features{f}).(labels{l}), 0:0.1:1)
+            histogram(histograms.(features{f}).(labels{l}), 0:0.05:1)
             hold on
         end
         title(features{f}, Interpreter="none")
