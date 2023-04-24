@@ -26,7 +26,7 @@ function test_set = k_NN_classifier(training_set, test_set, k)
         % Count the occurrences of each label
         label_counts = histcounts(label_indices, 1:numel(unique_labels)+1);
         [~, max_index] = max(label_counts);
-        test_set(i).classifed_as = char(unique_labels(max_index));
+        test_set(i).classified_as = char(unique_labels(max_index));
 
     end
     
