@@ -1,4 +1,4 @@
-function [confusion_matrix, labels, error_rate] = confusion_matrix(data)
+function [confusion_matrix, labels, error_rate] = generate_confusion_matrix(data)
     unique_labels = convertCharsToStrings(unique({data.label}, 'sorted'));
     d = dictionary(unique_labels, 1:length(unique_labels));
     

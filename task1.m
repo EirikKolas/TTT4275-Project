@@ -26,5 +26,5 @@ end
 classified_data = k_NN_classifier(training_set, test_set, 5);
 
 % Confusion matrix
-[confusion, labels, error_rate] = confusion_matrix(classified_data);
+[confusion, labels, error_rate] = generate_confusion_matrix(classified_data);
 
