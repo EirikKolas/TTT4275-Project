@@ -26,9 +26,5 @@ end
 classified_data = k_NN_classifier(training_set, test_set, 5);
 
 % Confusion matrix
-[confusion, labels] = confusion_matrix(classified_data);
+[confusion, labels, error_rate] = confusion_matrix(classified_data);
 
-% Error rate
-diag_sum = sum(diag(confusion));
-total_sum = sum(confusion(:));
-error_rate = (total_sum - diag_sum)/total_sum
