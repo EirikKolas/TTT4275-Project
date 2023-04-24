@@ -4,7 +4,7 @@ function [confusion_matrix, labels, error_rate] = generate_confusion_matrix(data
     
     confusion_matrix = zeros(length(unique_labels));
     for point = data
-        confusion_matrix(d(point.label),d(point.classifed_as)) = confusion_matrix(d(point.label),d(point.classifed_as))+1;
+        confusion_matrix(d(point.label),d(point.classified_as)) = confusion_matrix(d(point.label),d(point.classified_as))+1;
     end
     labels = unique_labels;
 
