@@ -4,29 +4,16 @@ clear
 all_data = load_music_data('Classification music/GenreClassData_30s.txt');
 all_data_normalized = data_set_normalizer(all_data);
 
-% Choose features
+%% Choose features
 features = ["spectral_rolloff_mean", "mfcc_1_mean", "spectral_centroid_mean", "tempo"];
-classes  = ["pop", "disco", "metal", "classical"];
-[test_set, training_set] = test_and_training_set(all_data_normalized, features, classes);
+classes  = string(unique(extractfield(all_data, 'Genre')));
 
-dataFeatures = extractfield(training_set,"features");
-dataFeatures = reshape(dataFeatures, [length(training_set), length(features)]);
+classified_data = GMM_classifier(all_data_normalized, features, classes);
 
-% Define number of classes
-numClasses = 4;
+[confusion, labels, error_rate] = generate_confusion_matrix(classified_data);
 
-% Train GMM classifier
-options = statset('MaxIter', 1000);
-GMM = fitgmdist(dataFeatures, numClasses, 'Options', options, 'CovarianceType', 'diagonal');
 
-% Compute the likelihood of each point belonging to each component
-P = posterior(GMM, dataFeatures);
 
-% Determine the predicted class for each point
-[~,pred] = max(P,[],2);
-
-% Predict class labels, alternativ 2
-predictedLabels = cluster(GMM, dataFeatures);
 
 % Generate classified_data matrix to calculate error rate and confusion matrix
 %uniqueLabels = string(unique(extractfield(all_data,"Genre")));
