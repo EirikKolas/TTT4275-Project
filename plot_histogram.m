@@ -29,7 +29,7 @@ function plot_histogram(all_data, features, classes)
             hold on
         end
         title(features{f}, Interpreter="none")
-        legend(labels)
+        % legend(labels)
         hold off
     end
 

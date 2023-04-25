@@ -3,6 +3,6 @@ function p = gaussian_mix_dist(x,C,mu,sigma)
 %   Detailed explanation goes here
     p = 0;
     for k = 1:length(C)
-        p = p + C(k)*gaussian_dist(x, mu(:,k), sigma(:,:,k));
+        p = p + C(k)*gaussian_dist(x, mu(:,k), diag(sigma(:,:,k)));
     end
 end

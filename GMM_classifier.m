@@ -11,7 +11,7 @@ function test_set = GMM_classifier(all_data, features, classes, M)
 
         rng(1);
         options = statset('MaxIter',500);
-        GMModel = fitgmdist(classFeatures,M, 'Options', options);
+        GMModel = fitgmdist(classFeatures, M, 'Options', options, 'CovarianceType','diagonal');
         GMM.(classes(i)).C = GMModel.ComponentProportion;
         GMM.(classes(i)).mu = GMModel.mu.';
         GMM.(classes(i)).sigma = GMModel.Sigma;

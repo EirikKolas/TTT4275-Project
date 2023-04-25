@@ -5,10 +5,11 @@ all_data = load_music_data('Classification music/GenreClassData_30s.txt');
 all_data_normalized = data_set_normalizer(all_data);
 
 %% Choose features
-features = ["spectral_rolloff_mean", "mfcc_1_mean", "spectral_centroid_mean", "tempo"];
+features = ["spectral_rolloff_mean", "mfcc_1_mean", "spectral_centroid_mean", "mfcc_8_mean"];
+features = ["rmse_mean", "chroma_stft_2_std"];
 classes  = string(unique(extractfield(all_data, 'Genre')));
 
-classified_data = GMM_classifier(all_data_normalized, features, classes, 3);
+classified_data = GMM_classifier(all_data_normalized, features, classes, 2);
 
 [confusion, labels, error_rate] = generate_confusion_matrix(classified_data);
 

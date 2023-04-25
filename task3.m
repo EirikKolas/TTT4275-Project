@@ -6,16 +6,17 @@ all_data_normalized = data_set_normalizer(all_data);
 fields = fieldnames(all_data);
 
 % Brukt til å printe alle features i histogrammer
-% i = 1;
-% for j = 1:length(fields)
-%     if ~(strcmp(fields(j), 'TrackID') || strcmp(fields(j), 'File') || strcmp(fields(j), 'GenreID') || strcmp(fields(j), 'Genre') || strcmp(fields(j), 'Type') || strcmp(fields(j), 'spectral_rolloff_mean') || strcmp(fields(j), 'mfcc_1_mean') || strcmp(fields(j), 'spectral_centroid_mean'))
-%          features(i) = string(fields(j));
-%          i = i + 1;
-%     end
-% end 
+i = 1;
+for j = 1:length(fields)
+    if ~(strcmp(fields(j), 'TrackID') || strcmp(fields(j), 'File') || strcmp(fields(j), 'GenreID') || strcmp(fields(j), 'Genre') || strcmp(fields(j), 'Type') || strcmp(fields(j), 'spectral_rolloff_mean') || strcmp(fields(j), 'mfcc_1_mean') || strcmp(fields(j), 'spectral_centroid_mean'))
+         features(i) = string(fields(j));
+         i = i + 1;
+    end
+end 
 
 % Choose features and classes
 classes  = ["pop", "disco", "metal", "classical"];
+% features = ["spectral_rolloff_mean", "mfcc_1_mean", "spectral_centroid_mean", "tempo"];
 
 % for j = 1:length(fields)
 %     if ~(strcmp(fields(j), 'TrackID') || strcmp(fields(j), 'File') || strcmp(fields(j), 'GenreID') || strcmp(fields(j), 'Genre') || strcmp(fields(j), 'Type') || strcmp(fields(j), 'spectral_rolloff_mean') || strcmp(fields(j), 'mfcc_1_mean') || strcmp(fields(j), 'spectral_centroid_mean'))
@@ -30,7 +31,7 @@ classes  = ["pop", "disco", "metal", "classical"];
 % end 
 
 %% Histogram
-features = ["spectral_rolloff_mean", "mfcc_1_mean", "spectral_centroid_mean", "mfcc_8_mean"];
+% features = ["spectral_rolloff_mean", "mfcc_1_mean", "spectral_centroid_mean", "mfcc_8_mean"];
 
 plot_histogram(all_data_normalized, features, classes);
 
